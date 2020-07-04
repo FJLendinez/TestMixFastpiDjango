@@ -3,7 +3,10 @@
 
 To make it run:
 
-`DJANGO_SETTINGS_MODULE=ordermaker.settings uvicorn main:app --reload`
+```
+python manage.py migrate   
+DJANGO_SETTINGS_MODULE=ordermaker.settings uvicorn main:app --reload
+```
 
 Go to:
 
