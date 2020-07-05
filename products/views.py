@@ -1,32 +1,21 @@
 from typing import List
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 
-from ordermaker.db_sync import database_sync_to_async
 from products.models import ProductModel
 from products.schemas import Product, ProductIn
+from users.utils import get_current_user, get_admin_user
 
 router = APIRouter()
 
 
-@database_sync_to_async
-def get_all():
-    return list(ProductModel.objects.all())
-
-
 @router.get("/", response_model=List[Product])
-async def list_products():
-    products = await get_all()
+def list_products(user=Depends(get_current_user)):
+    products = list(ProductModel.objects.all())
     return products
 
 
-@database_sync_to_async
-def create_product_in_db(product_data: ProductIn):
-    product = ProductModel.objects.create(**dict(product_data))
-    return product
-
-
 @router.post("/", response_model=Product)
-async def create_product(product_data: ProductIn):
-    product_in_db = await create_product_in_db(product_data)
+def create_product(product_data: ProductIn, user=Depends(get_admin_user)):
+    product_in_db = ProductModel.objects.create(**dict(product_data))
     return product_in_db

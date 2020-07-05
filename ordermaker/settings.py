@@ -16,7 +16,8 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
-    'products.apps.ProductsConfig'
+    'products.apps.ProductsConfig',
+    'users.apps.UsersConfig'
 ]
 
 DATABASES = {
