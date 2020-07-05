@@ -5,7 +5,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from starlette import status
 
 from users.models import UserModel
-from users.schemas import UserSignUp, UserSignUpOut, Token
+from users.schemas import UserSignUp, UserSignUpOut, Token, UserMeOut
 from users.utils import create_access_token, get_current_user
 
 router = APIRouter()
@@ -35,6 +35,6 @@ def register(user: UserSignUp):
     return user
 
 
-@router.get("/me/")
+@router.get("/me/", response_model=UserMeOut)
 async def read_logged_user(current_user=Depends(get_current_user)):
     return current_user

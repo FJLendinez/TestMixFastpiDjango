@@ -22,3 +22,11 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     username: Optional[str] = None
+
+
+class UserMeOut(BaseModel):
+    username: str
+    is_admin: str
+
+    class Config:
+        orm_mode = True

@@ -16,7 +16,7 @@ And enjoy :D
 
 # User management
 
-Now in this example we can signup and login easy and securely. You can test creating a user and log in `authorize` button or `token` endpoint
+Now in this example we can signup and login easy and securely. You can test creating an user and log in `authorize` button or `token` endpoint
 
 
 ![image](/docs/images/OpenAPI.png)
