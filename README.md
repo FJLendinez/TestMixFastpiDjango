@@ -28,3 +28,8 @@ There are 2 deps, one for authorize and another to check if user is admin.
 Check view `GET /` to see `get_current_user` dep.
 
 Check view `POST /` to see `get_admin_user` dep.
+
+
+# Relationships
+
+Pydantic and Django's ORM **doesn't communicate properly** when we use relations. Pydantic hopes a list on relation attribute and ORM introduce `RelatedManager` instead. 
